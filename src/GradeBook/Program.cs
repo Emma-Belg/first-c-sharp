@@ -33,16 +33,18 @@ namespace GradeBook
             
 
             var result = 0.0;
-            var highGrade = double.MinValue;
+            var highestGrade = double.MinValue;
+            var lowestGrade = double.MaxValue;
             foreach(var number in grades){
-                if(number > highGrade) {
-                    highGrade = number;
-                }
+                lowestGrade = Math.Min(number, lowestGrade);
+                highestGrade = Math.Max(number, highestGrade);
                 result += number;
             }
             //Count is to Lists what Length is to Arrays
             result /= grades.Count;
             //The :N2 is to say how many decimals I would like in my floating number
+            Console.WriteLine($"The lowest grade is: {lowestGrade:N2}");
+            Console.WriteLine($"The highest grade is: {highestGrade:N2}");
             Console.WriteLine($"The average grade is: {result:N2}");
 
         }   
