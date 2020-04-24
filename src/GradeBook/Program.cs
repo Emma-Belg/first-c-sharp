@@ -12,12 +12,11 @@ namespace GradeBook
             System.Console.WriteLine(result);
 
             var numbers = new[] {12.7, 10.3, 6.11, 4.1};
-            numbers[0] = 12.7;
-            numbers [1] = 10.3;
-            numbers[2]= 6.11;
 
-            var result1 = numbers[0]+ numbers[1] + numbers[2];
-            result1 += numbers[3];
+            var result1 = 0.0;
+            foreach(var number in numbers){
+                result1 += number;
+            }
             Console.WriteLine(result1);
 
 
