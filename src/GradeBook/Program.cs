@@ -31,7 +31,8 @@ namespace GradeBook
             }
             //Count is to Lists what Length is to Arrays
             result /= grades.Count;
-            Console.WriteLine($"The average grade is: {result}");
+            //The :N2 is to say how many decimals I would like in my floating number
+            Console.WriteLine($"The average grade is: {result:N2}");
 
 
             if (args.Length >0)
