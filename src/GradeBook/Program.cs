@@ -21,31 +21,7 @@ namespace GradeBook
             book.AddGrade(89.1);
             book.AddGrade(90.5);
             book.AddGrade(77.5);
-
-            //List is not in the System namespace, to find what namespace a class is in do the following:
-            //place your cursor on the class name and press ctrl+. then click on the "using ....." and it will add this as a 'using statement' at the top
-            //A List type requires one type argument, this is put in the <>
-            //You can use List similarly to an Array but the benefit of a List over an Array is that you can easily add things into a list (you can add things into an Array also, but it is not as easy). 
-            //A list is implemented from the start as a dynamically sizable collection that you can easily add to or take from
-            //A List is storing data(aka state), in this case, the numbers
-            List<double> grades = new List<double>() {12.7, 10.3, 6.11, 4.1};
-            grades.Add(56.1);
-            
-
-            var result = 0.0;
-            var highestGrade = double.MinValue;
-            var lowestGrade = double.MaxValue;
-            foreach(var number in grades){
-                lowestGrade = Math.Min(number, lowestGrade);
-                highestGrade = Math.Max(number, highestGrade);
-                result += number;
-            }
-            //Count is to Lists what Length is to Arrays
-            result /= grades.Count;
-            //The :N2 is to say how many decimals I would like in my floating number
-            Console.WriteLine($"The lowest grade is: {lowestGrade:N2}");
-            Console.WriteLine($"The highest grade is: {highestGrade:N2}");
-            Console.WriteLine($"The average grade is: {result:N2}");
+            book.ShowStatistics();
 
         }   
     }
