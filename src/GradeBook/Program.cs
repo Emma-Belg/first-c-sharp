@@ -9,13 +9,13 @@ namespace GradeBook
         {
             double x = 34.1;
             double y = 32.9;
-            var result = x + y;
+            var adding = x + y;
             //System is the namespace that Console lives in.
             //When you use the cw shortcut VSC inserts the namespace as well
             //The System namespace is not required explicitly here as in line one we are 'using' the System Namespace with a 'using statement'
-            System.Console.WriteLine(result);
+            System.Console.WriteLine(adding);
 
-            var numbers = new[] {12.7, 10.3, 6.11, 4.1};
+
             //List is not in the System namespace, to find what namespace a class is in do the following:
             //place your cursor on the class name and press ctrl+. then click on the "using ....." and it will add this as a 'using statement' at the top
             //A List type requires one type argument, this is put in the <>
@@ -25,11 +25,13 @@ namespace GradeBook
             grades.Add(56.1);
         
 
-            var result1 = 0.0;
+            var result = 0.0;
             foreach(var number in grades){
-                result1 += number;
+                result += number;
             }
-            Console.WriteLine(result1);
+            //Count is to Lists what Length is to Arrays
+            result /= grades.Count;
+            Console.WriteLine($"The average grade is: {result}");
 
 
             if (args.Length >0)
