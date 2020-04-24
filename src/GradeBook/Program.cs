@@ -11,6 +11,14 @@ namespace GradeBook
             var result = x + y;
             System.Console.WriteLine(result);
 
+            double[] numbers = new double[] {12.7, 10.3, 6.11, 4.1};
+            numbers[0] = 12.7;
+            numbers [1] = 10.3;
+            numbers[2]= 6.11;
+
+            var result1 = numbers[0]+ numbers[1] + numbers[2];
+            Console.WriteLine(result1);
+
 
             if (args.Length >0)
             {
