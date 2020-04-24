@@ -26,7 +26,7 @@ namespace GradeBook
         
 
             var result1 = 0.0;
-            foreach(var number in numbers){
+            foreach(var number in grades){
                 result1 += number;
             }
             Console.WriteLine(result1);
