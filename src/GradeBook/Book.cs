@@ -11,7 +11,8 @@ namespace GradeBook
     //  - what is the state that is going to be stored inside of instances of this type/class?
     //  - think of a class as 2 things - the state/data it holds and the behaviour that acts on that state
    
-    class Book 
+   // if you do not specify an access modifier of a class then it is implicitly treated as 'internal'
+    public class Book 
     {
          //Variables outside of methods in classes are no longer known as variables but at known as 'Fields'
         private List<double> grades = new List<double>();
