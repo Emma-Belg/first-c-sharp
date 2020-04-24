@@ -13,11 +13,13 @@ namespace GradeBook
     class Book 
     {
         //A constructor in C# must be written as a method with the same name as the Class
-        public Book(){
+        public Book(string name){
+            this.name = name;
             grades = new List<double>();
         }
         //Variables outside of methods in classes are no longer known as variables but at known as 'Fields'
-        List<double> grades = new List<double>();
+        private List<double> grades = new List<double>();
+        private string name;
 
         //Use the void Keyword with a method that is not going to return an
         public void AddGrade(double grade)

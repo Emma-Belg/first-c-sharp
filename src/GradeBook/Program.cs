@@ -16,8 +16,11 @@ namespace GradeBook
             //The System namespace is not required explicitly here as in line one we are 'using' the System Namespace with a 'using statement'
             System.Console.WriteLine(adding);
 
-            var book = new Book();
+            //we have created a Book class to abstract the add grade method as knowing the details of this are not important for the program class
+            var book = new Book("Emma's Grade Book");
             book.AddGrade(89.1);
+            book.AddGrade(90.5);
+            book.AddGrade(77.5);
 
             //List is not in the System namespace, to find what namespace a class is in do the following:
             //place your cursor on the class name and press ctrl+. then click on the "using ....." and it will add this as a 'using statement' at the top
@@ -30,7 +33,11 @@ namespace GradeBook
             
 
             var result = 0.0;
+            var highGrade = double.MinValue;
             foreach(var number in grades){
+                if(number > highGrade) {
+                    highGrade = number;
+                }
                 result += number;
             }
             //Count is to Lists what Length is to Arrays
