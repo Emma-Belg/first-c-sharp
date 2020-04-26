@@ -21,7 +21,13 @@ namespace GradeBook
             book.AddGrade(89.1);
             book.AddGrade(90.5);
             book.AddGrade(77.5);
-            book.ShowStatistics();
+
+            var stats = book.GetStatistics();
+
+            //The :N2 is to say how many decimals I would like in my floating number
+            Console.WriteLine($"The lowest grade is: {stats.Low:N2}");
+            Console.WriteLine($"The highest grade is: {stats.High:N2}");
+            Console.WriteLine($"The average grade is: {stats.Average:N2}");
 
         }   
     }

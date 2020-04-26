@@ -29,11 +29,13 @@ namespace GradeBook.Tests
 
             //2nd Section: 
             //Act (invoke a method to perform a computation. Do something to check actual result)
-            var result = book.ShowStatistics();
+            var result = book.GetStatistics();
 
             //3rd Section:
             //Assert (assert something about the value found in Act)
             Assert.Equal(85.6, result.Average);
+            Assert.Equal(90.5, result.high);
+            Assert.Equal(77.3, result.low);
         }
     }
 }

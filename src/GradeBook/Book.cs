@@ -31,7 +31,9 @@ namespace GradeBook
 
         }
 
-        public void ShowStatistics()
+        //I have asked that this method return the type "Statistics" which is a class that I have created in another file.
+
+        public Statistics GetStatistics()
         {
             //List is not in the System namespace, to find what namespace a class is in do the following:
             //place your cursor on the class name and press ctrl+. then click on the "using ....." and it will add this as a 'using statement' at the top
@@ -43,20 +45,20 @@ namespace GradeBook
             grades.Add(56.1);
             
 
-            var result = 0.0;
-            var highestGrade = double.MinValue;
-            var lowestGrade = double.MaxValue;
-            foreach(var number in grades){
-                lowestGrade = Math.Min(number, lowestGrade);
-                highestGrade = Math.Max(number, highestGrade);
-                result += number;
+            var result = new Statistics();
+            //when you instantiate an object in .Net runtime it ensures that all of the fields inside a paricular class hen it is instantiated as an object are set to 'all bits off'.
+            //"All bits off" means that all bits in the memory space are zero meaning a number would be set to = to 0.0
+            result.High = double.MinValue;
+            result.Low = double.MaxValue;
+            foreach(var grade in grades){
+                result.Low = Math.Min(grade, result.Low);
+                result.High = Math.Max(grade, result.High);
+                result.Average += grade;
             }
             //Count is to Lists what Length is to Arrays
-            result /= grades.Count;
-            //The :N2 is to say how many decimals I would like in my floating number
-            Console.WriteLine($"The lowest grade is: {lowestGrade:N2}");
-            Console.WriteLine($"The highest grade is: {highestGrade:N2}");
-            Console.WriteLine($"The average grade is: {result:N2}");
+            result.Average /= grades.Count;
+
+            return result; 
         }
     }
 }
