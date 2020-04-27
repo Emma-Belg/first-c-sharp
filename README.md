@@ -43,7 +43,9 @@ Example:
         }
   ```
         
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "CSharpUsesPassByValue")
+![alt text](https://github.com/Emma-Belg/first-c-sharp/blob/master/CSharpIsPassByValue.png "CSharpUsesPassByValue")
+![alt text](CSharpIsPassByValue.png "CSharpUsesPassByValue")
+
 
 
 
