@@ -25,8 +25,8 @@ namespace GradeBook
             var stats = book.GetStatistics();
 
             //The :N2 is to say how many decimals I would like in my floating number
-            Console.WriteLine($"The lowest grade is: {stats.Low:N2}");
-            Console.WriteLine($"The highest grade is: {stats.High:N2}");
+            Console.WriteLine($"The lowest grade is: {stats.Low}");
+            Console.WriteLine($"The highest grade is: {stats.High}");
             Console.WriteLine($"The average grade is: {stats.Average:N2}");
 
         }   

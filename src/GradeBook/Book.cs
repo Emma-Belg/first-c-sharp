@@ -5,7 +5,6 @@ namespace GradeBook
 {
 
     //creating a new class for abstraction in the Program class
-
     //Things to think about when creating a new class 
     //  - what is the behaviour of this particular class?
     //  - what is the state that is going to be stored inside of instances of this type/class?
@@ -15,7 +14,7 @@ namespace GradeBook
     public class Book 
     {
          //Variables outside of methods in classes are no longer known as variables but at known as 'Fields'
-        private List<double> grades = new List<double>();
+        private List<double> grades;
         private string name;
 
         //A constructor in C# must be written as a method with the same name as the Class
@@ -48,8 +47,10 @@ namespace GradeBook
             var result = new Statistics();
             //when you instantiate an object in .Net runtime it ensures that all of the fields inside a paricular class hen it is instantiated as an object are set to 'all bits off'.
             //"All bits off" means that all bits in the memory space are zero meaning a number would be set to = to 0.0
+            result.Average  = 0.0;
             result.High = double.MinValue;
             result.Low = double.MaxValue;
+            
             foreach(var grade in grades){
                 result.Low = Math.Min(grade, result.Low);
                 result.High = Math.Max(grade, result.High);

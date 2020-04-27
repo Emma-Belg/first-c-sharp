@@ -17,4 +17,8 @@
     <ProjectReference Include="..\..\src\GradeBook\GradeBook.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <AssemblyReference Include="..\..\src\GradeBook\Statistics.cs" />
+  </ItemGroup>
+
 </Project>
