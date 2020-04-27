@@ -17,7 +17,12 @@ Fields are similarly, also references to location in memory.
 **Value types**  
 Intergers are special types in .Net, they are what is known as value types because for a value type the runtime still creates space for the variable x. But instead of creating a 'refrence' to an address inside of the variable, it stores the value itself and it is stored directly in that variable.  
 eg: `var x = 3;`
-All numbers are value types; eg. floats, integers, doubles
+The following are value types: floats, integers, doubles, DateTime, bool, Struct
+All Structs are value types. You can check the type in Visual Studio Code by putting your cursor on the type and then hitting f12.  
+
+Classes and strings are reference types but String is a special case because it behaves like a value type.
+
+NOTE: LOOK INTO Struct vs Class
 
 ## Pass by Reference vs Pass by Value  
 
@@ -44,6 +49,11 @@ Example:
   ```
         
 ![alt text](https://github.com/Emma-Belg/first-c-sharp/blob/master/CSharpIsPassByValue.png "CSharpUsesPassByValue")
+
+**Pass By Reference**  
+You can do a pass by reference using the "ref" or "out" keywords.  
+The difference between "ref" and "out" is that with the "out" keyword the C# compiler assumes that the incoming reference has not been initialised. Therefore it will be an error if you do not assign to an "out" perameter because it expects something assigned to the output perameter, it is like leaving an uninitialised variable around.
+
 ![alt text](CSharpCanPassByReference.png "CSharpCanPassByReference")
 
 
@@ -58,4 +68,8 @@ To create a solution file type into terminal:
 You can add projects to the solution with commands like:  
 `dotnet sln add src/GradeBook/GradeBook.csproj`  
 
+
+## Garbage Collection in .Net runtime
+
+You do not need to tell the runtime to delete an object to free up memory space as .Net has a garbage collector. It will keep track of all the objects that you have allocated and created and it tracks variables and fields. The .Net runtime knows when there is an object in memory and knows that if it has no variables or fields pointing to or using that object that the object is no longer in use and that it can run a garbage collection to free up memory so that your program doesn't exhaust memory. 
 
