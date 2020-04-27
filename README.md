@@ -27,7 +27,7 @@ In the C# language, when you pass a parameter to a method you are ALWAYS passing
 That would be very different in a language where they pass perameters by reference because then they would recieve a reference to variable book1 and the perameter could still make changes to the book1 object because the perameter holds a reference to a variable that still holds a reference to my book object. But in a pass by reference scenario, I can even make chages to that book1 varaible itself from the other method and that is something that CANNOT happen if I use 'pass by value'.
 
 Example:  
-`
+```
         [Fact]
         public void CanSetNameFromReference()
         {
@@ -41,7 +41,7 @@ Example:
         {
             book1.Name = name;
         }
-        `
+        ```
         
 
 
