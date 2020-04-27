@@ -15,12 +15,12 @@ namespace GradeBook
     {
          //Variables outside of methods in classes are no longer known as variables but at known as 'Fields'
         private List<double> grades;
-        private string name;
+        public string Name;
 
         //A constructor in C# must be written as a method with the same name as the Class
         public Book(string name){
-            this.name = name;
             grades = new List<double>();
+            Name = name;
         }
        
         //Use the void Keyword with a method that is not going to return an
@@ -40,8 +40,8 @@ namespace GradeBook
             //You can use List similarly to an Array but the benefit of a List over an Array is that you can easily add things into a list (you can add things into an Array also, but it is not as easy). 
             //A list is implemented from the start as a dynamically sizable collection that you can easily add to or take from
             //A List is storing data(aka state), in this case, the numbers
-            List<double> grades = new List<double>() {12.7, 10.3, 6.11, 4.1};
-            grades.Add(56.1);
+                //List<double> grades = new List<double>() {12.7, 10.3, 6.11, 4.1};
+                //grades.Add(56.1);
             
 
             var result = new Statistics();

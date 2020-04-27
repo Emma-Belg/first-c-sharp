@@ -9,10 +9,10 @@ namespace GradeBook.Tests
     {
         //[Fact] is an attribute
         //An attribute is bit of data that is attached to the symbol that follows it
-        //[Fact] is attached to Test1
+        //[Fact] is attached to BookCalcutesAnAverageGrade
         //Attributes can be thought of as 'decoration' that u put on methods
         [Fact]
-        public void Test1()
+        public void BookCalcutesAnAverageGrade()
         {
             //People usually break up unit tests into 3 sections (the tripple A testing sections)
             //1st Section: 
@@ -36,9 +36,9 @@ namespace GradeBook.Tests
                 //the firest is the expected result
                 //the second is running the actual test
                 //the third is "precision" where you can say to how many decimal places you would like to check
-            Assert.Equal(85.6, result.Average, 2);
-            Assert.Equal(90.5, result.High, 2);
-            Assert.Equal(77.3, result.Low, 2);
+            Assert.Equal(85.6, result.Average, 1);
+            Assert.Equal(90.5, result.High, 1);
+            Assert.Equal(77.3, result.Low, 1);
         }
     }
 }
