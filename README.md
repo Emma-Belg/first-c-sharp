@@ -22,7 +22,7 @@ All numbers are value types; eg. floats, integers, doubles
 ## Pass by Reference vs Pass by Value  
 
 These terms describe how a perameter is given to some method that you are invoking.  
-In the C# language, when you pass a parameter to a method you are ALWAYS passing a perameter by value. What that means is that I am taking the value from (see below example) book1 and I am copying that and placing it into the perameter Book. The value represents a pointer to a memory location so it is a reference to a book object.  
+In the C# language, when you pass a parameter to a method you are ALWAYS passing a perameter by value (unless you specify with keywords). What that means is that I am taking the value from (see below example) book1 and I am copying that and placing it into the perameter Book. The value represents a pointer to a memory location so it is a reference to a book object.  
 
 That would be very different in a language where they pass perameters by reference because then they would recieve a reference to variable book1 and the perameter could still make changes to the book1 object because the perameter holds a reference to a variable that still holds a reference to my book object. But in a pass by reference scenario, I can even make chages to that book1 varaible itself from the other method and that is something that CANNOT happen if I use 'pass by value'.
 
@@ -44,7 +44,7 @@ Example:
   ```
         
 ![alt text](https://github.com/Emma-Belg/first-c-sharp/blob/master/CSharpIsPassByValue.png "CSharpUsesPassByValue")
-![alt text](CSharpIsPassByValue.png "CSharpUsesPassByValue")
+![alt text](CSharpIsPassByValue.png "CSharpCanPassByReference")
 
 
 
