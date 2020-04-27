@@ -44,7 +44,7 @@ Example:
   ```
         
 ![alt text](https://github.com/Emma-Belg/first-c-sharp/blob/master/CSharpIsPassByValue.png "CSharpUsesPassByValue")
-![alt text](CSharpIsPassByValue.png "CSharpCanPassByReference")
+![alt text](CSharpCanPassByReference.png "CSharpCanPassByReference")
 
 
 
