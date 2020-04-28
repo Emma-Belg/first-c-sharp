@@ -30,7 +30,18 @@ Classes can have: methods, fields, properties
 
 ### Delegate
 Delegates describe what a method will look like. 
-A delegate allows you to define a variable that can point to and invoke different methods. But a delegate cannot point to just any method, the method must have a specific shape and structure.
+A delegate allows you to define a variable that can point to and invoke different methods. But a delegate cannot point to just any method, the method must have a specific shape and structure.  
+When you should think about the return type of the method you expect to call, what are the perameter types and number of perameters that you expect to pass when you invoke this method.  
+
+Example: Imagine I want to define a delegate that allows me to log messages. You use a delegate because you need some kind of abstraction/encapsulation between your code and the code that ulimately does the loggin. Delegates provide a way to say which method is to be called when an event is triggered.  
+
+In this example, we use a delegate because it is not 'hard coded' to a method that only writes to the console or to a file. We want the ability to have a variable or a field that have the same structure but perhaps vastly different implementation. For example one method logs to the console while the other logs to a file.  
+
+Method or perameter _names_ do not matter with delegates, only perameter and return _types_ are what matters. The method return type and perameter type must match the delegate.  
+
+Delegates are know as "multi cast delegates" because they can invoke multiple methods. They give you the ability to declare a variable that can be used like a method; it is variable that can be invoked and perameters can be passed along to it.
+
+
 
 ## Pass by Reference vs Pass by Value  
 
