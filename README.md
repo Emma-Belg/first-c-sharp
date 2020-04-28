@@ -17,7 +17,7 @@ Fields are similarly, also references to location in memory.
 **Value types**  
 Intergers are special types in .Net, they are what is known as value types because for a value type the runtime still creates space for the variable x. But instead of creating a 'refrence' to an address inside of the variable, it stores the value itself and it is stored directly in that variable.  
 eg: `var x = 3;`
-The following are value types: floats, integers, doubles, DateTime, bool, Struct
+The following are value types: floats, integers, doubles, DateTime, bool, char, Struct
 All Structs are value types. You can check the type in Visual Studio Code by putting your cursor on the type and then hitting f12.  
 
 Classes and strings are reference types but String is a special case because it behaves like a value type.
