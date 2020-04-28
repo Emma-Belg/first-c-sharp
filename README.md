@@ -1,6 +1,7 @@
 # My First c#
 
 I am following an intro to c# "c# Fundamentals" tutorial by Scott Allen on Plurasight.
+The code is absolutely FULL of comments as I tried to note most of the 'important' things he said. This means the code is _very ugly and not nice to read_, but this is a learning exercise for me and I have made a lot of notes for if I ever need to go back to look at something. 
 
 
 # My Notes from the tutoral  
@@ -22,7 +23,14 @@ All Structs are value types. You can check the type in Visual Studio Code by put
 
 Classes and strings are reference types but String is a special case because it behaves like a value type.
 
-NOTE: LOOK INTO Struct vs Class
+NOTE: LOOK INTO Struct vs Class vs Delegate
+
+### Class Types
+Classes can have: methods, fields, properties
+
+### Delegate
+Delegates describe what a method will look like. 
+A delegate allows you to define a variable that can point to and invoke different methods. But a delegate cannot point to just any method, the method must have a specific shape and structure.
 
 ## Pass by Reference vs Pass by Value  
 
@@ -71,5 +79,82 @@ You can add projects to the solution with commands like:
 
 ## Garbage Collection in .Net runtime
 
-You do not need to tell the runtime to delete an object to free up memory space as .Net has a garbage collector. It will keep track of all the objects that you have allocated and created and it tracks variables and fields. The .Net runtime knows when there is an object in memory and knows that if it has no variables or fields pointing to or using that object that the object is no longer in use and that it can run a garbage collection to free up memory so that your program doesn't exhaust memory. 
+You do not need to tell the runtime to delete an object to free up memory space as .Net has a garbage collector. It will keep track of all the objects that you have allocated and created and it tracks variables and fields. The .Net runtime knows when there is an object in memory and knows that if it has no variables or fields pointing to or using that object that the object is no longer in use and that it can run a garbage collection to free up memory so that your program doesn't exhaust memory.   
 
+## Properties and Fields  
+
+When you declare a variable inside of the class but outside of the method it is known as a "field".
+Creating a property is similar to writing setter and getter methods but no method is needed.
+It is a way to encapsulate the field and make it accessable (with a public property) but keep it protected (by keeping the field itself private).  
+
+```
+        //note there are no () or ; after the Name as it is not a method but a public property
+        public string Name
+        {
+            get {
+                return name;
+            }
+            set {
+                //value is an implicit variable. 
+                //Anytime you are in the setter for a property, there will be an implicit variable available and it will be the incoming value tha someone writes into your property 
+                if(!String.IsNullOrEmpty(value)){
+                    name = value;
+                }
+            }
+        }
+        private string name;  
+```
+
+**Auto Properties**  
+You could write the exact same code as above with an Auto Property. This means that you do not even have to declare the field
+
+```
+        public string Name1
+        {
+            get;
+            //setting the setter to private means that people can't simply "book.Name = "example"" to set/overwrite the name
+            //it means that they can only set the name via the contructor (once it's constructed, the name cannot be changed)
+            private set;
+        }  
+```
+So what is the point? What is the difference between properties and fields?
+THere are some places in the .Net runtime where properties might behave a bit differently to fields - most of those places revolve around reflection and serialisation. Reflection and Serialization both dynamically at run time go in and inspect an object and see what it has available for state.  
+
+
+## Events  
+
+Events are not as commonly in todays frameworks as they used to be. For example the ASP.core (which is for server side and web programing) framework, doesn,t use Events very much.  
+Events are popular in forms and desktop programing. Some frameworks that use Events a lot include: Windows presentation foundation, Zamer and forms, Windows forms, ASP.net web forms.  
+Events build on top of Delegates.  
+
+
+## Overloading
+To overload a method you simply write the same method with a different signiture (a method signiture is made up of ONLY the  method name and the perameters the method takes).
+So for example I could write both doubles and characters to method AddGrade by doing this:
+
+```
+        public void AddGrade(double grade)
+        {
+            if(grade <= 100 && grade >= 0)
+            {
+              grades.Add(grade);  
+            }
+        }
+        
+        public void AddGrade(char Letter)
+        {
+                switch(letter)
+                 {
+                    case 'A':
+                         AddGrade(90);
+                         break;
+                    default:
+                         AddGrade(0);
+                         break;
+                 }
+
+         }
+        
+```
+
+        
