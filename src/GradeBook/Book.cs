@@ -29,13 +29,20 @@ namespace GradeBook
         event GradeAddedDelegate GradeAdded;
     }
 
-    public abstract class Book : NamedObject
+    public abstract class Book : NamedObject, IBook
     {
         public Book(string name) : base(name)
         {
         }
 
+        public virtual event GradeAddedDelegate GradeAdded;
+
         public abstract void AddGrade(double grade);
+
+        public virtual Statistics GetStatistics()
+        {
+            throw new NotImplementedException();
+        }
     }
 
 
@@ -54,19 +61,19 @@ namespace GradeBook
         //note there are no () or ; after the Name as it is not a method but a public property
         //This is a method of encapsulation
         //having this as a public property allows me to have my name as private a protect that class member
-        public string Name
-        {
-            get {
-                return name;
-            }
-            set {
-                //value is an implicit variable. 
-                //Anytime you are in the setter for a property, there will be an implicit variable available and it will be the incoming value tha someone writes into your property 
-                if(!String.IsNullOrEmpty(value)){
-                    name = value;
-                }
-            }
-        }
+            // public string Name
+            // {
+            //     get {
+            //         return name;
+            //     }
+            //     set {
+            //         //value is an implicit variable. 
+            //         //Anytime you are in the setter for a property, there will be an implicit variable available and it will be the incoming value tha someone writes into your property 
+            //         if(!String.IsNullOrEmpty(value)){
+            //             name = value;
+            //         }
+            //     }
+            // }
         private string name;
 
         //You could write all of the code for the field and property of Name with the same code as below
@@ -130,11 +137,11 @@ namespace GradeBook
         //It means that outside of this class anyone can write book.GradeAdded and it will a delegate that is invoked whenever a grade is added (see GradeAddedDelegate above)
         //Adding the event keyword to the delegate adds some additional restrictions and capabilities that makes this delegate safer to use
         //We will 'invoke' this delegate in AddGrade (remember to think of delegates like fields/variables)
-        public event GradeAddedDelegate GradeAdded;
+        public override event GradeAddedDelegate GradeAdded;
 
 
         //I have asked that this method return the type "Statistics" which is a class that I have created in another file.
-        public Statistics GetStatistics()
+        public override Statistics GetStatistics()
         {
             //List is not in the System namespace, to find what namespace a class is in do the following:
             //place your cursor on the class name and press ctrl+. then click on the "using ....." and it will add this as a 'using statement' at the top
