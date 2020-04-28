@@ -232,8 +232,11 @@ public class NamedObject
 ```
 
 ## Polymorphism  
+You can use abstract classes, virtual methods or interfaces to achieve polymorphism.
+The key to polymorphism is to override methods that we inherit from our base classes.  
+You cannot override any method in C#, you can only override **abstract methods or virtual methods**.  
 
-You cannot override any method in C#, you can only override abstract methods (the below example is using the above abstract method that it inherits from).
+The below example is using the above abstract method that it inherits from.
 
 ```
 //the override keyword needs to be used here as this class inherits from an abstract clss with an abstract AddGrade method.
@@ -245,5 +248,19 @@ You cannot override any method in C#, you can only override abstract methods (th
         
 ```
 
+**Interfaces**  
+
+The everyday use case for an Interface is to define a pure abstraction.
+There is a convention in C# and .Net that any time you write an interface, the name of the interface starts with a capital I.
+To implement an interface is the same as inheriting. An example of both inheriting and using 2 interfaces:  
+`public void ClassName : BaseClaseName, InterfaceName, InterfaceTwo`  
+
+**Virtual Keyword**  
+
+The virtual keyword on a method is a way of saying "here is a method that is in this class, but a derived class might choose to override the implementation details for this method."  
+Properties can also be virtual.
+
+**Absract Method**
+An abstract method is implicityly virtual.  
 
         
