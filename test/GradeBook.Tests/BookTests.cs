@@ -39,6 +39,17 @@ namespace GradeBook.Tests
             Assert.Equal(85.6, result.Average, 1);
             Assert.Equal(90.5, result.High, 1);
             Assert.Equal(77.3, result.Low, 1);
+            Assert.Equal('B', result.Letter);
         }
+
+        //[Fact]
+       // public void GradeMustBeBetweenOneAndHundred()
+        //{
+            //var TooHigh = new Book ("");
+            //TooHigh.AddGrade(200);
+            //var result = TooHigh.GetStatistics();
+
+            //Assert.Equal("Invalid value", result.Average);
+        //}
     }
 }

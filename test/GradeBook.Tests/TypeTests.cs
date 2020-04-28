@@ -8,6 +8,47 @@ namespace GradeBook.Tests
     public class TypeTests
     {
         [Fact]
+        public void StringsBehaveLikeValueTypes()
+        {
+            //Value types are immutable 
+            //strings are not values but they are also immutable
+            string name = "Scott";
+            var upper = MakeUpperCase(name);
+            
+            Assert.Equal("Scott", name);
+            Assert.Equal("SCOTT", upper);
+            //This assertion will fail because the method ToUpper does not actually chnge the string but returns a copy of the string converted to uppercase
+                //Assert.Equal("SCOTT", name);
+            
+        }
+
+        private string MakeUpperCase(string parameter)
+        {
+            return parameter.ToUpper();
+        }
+
+        [Fact]
+        public void ValueTypeAlsoPassByValue()
+        {
+            var x = GetInt();
+            SetInt(x);
+            //Though u might think that the value would be 42 it is actually 3 because the value of x does not change unless you use "ref" and cause it to pass by reference
+            Assert.Equal(3, x);
+        }
+
+        private void SetInt(int z)
+        {
+            z = 42;
+        }
+        
+        private int GetInt()
+        {
+            return 3;
+        }
+
+        [Fact]
+        //This is how you would pass a perameter by Reference (using the ref keyword)
+        //but in C# programing it is not that common so you won't see the "ref" keyword often, but there are some APIs that demand it
         public void CSharpCanPassByRef()
         {
             var book1 = GetBook("Book 1");
