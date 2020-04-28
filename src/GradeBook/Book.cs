@@ -4,6 +4,41 @@ using System.Collections.Generic;
 namespace GradeBook
 {
 
+    //Note that this delegate should be in a different file but is here for simplicity
+    public delegate void GradeAddedDelegate(object sender, EventArgs args);
+
+    //Again, shouldn't be making this class here but to keep it simple I am
+    public class NamedObject
+    {
+        public NamedObject(string name)
+        {
+            Name = name;
+        }
+        public string Name{
+            get;
+            set;
+        }
+    }
+
+    //Defining an interface, the convention is that an interface starts with a capital I.
+    public interface IBook
+    {
+        void AddGrade (double grade);
+        Statistics GetStatistics();
+        string Name { get; }
+        event GradeAddedDelegate GradeAdded;
+    }
+
+    public abstract class Book : NamedObject
+    {
+        public Book(string name) : base(name)
+        {
+        }
+
+        public abstract void AddGrade(double grade);
+    }
+
+
     //creating a new class for abstraction in the Program class
     //Things to think about when creating a new class 
     //  - what is the behaviour of this particular class?
@@ -11,7 +46,7 @@ namespace GradeBook
     //  - think of a class as 2 things - the state/data it holds and the behaviour that acts on that state
    
    // if you do not specify an access modifier of a class then it is implicitly treated as 'internal'
-    public class Book 
+    public class InMemoryBook : Book, IBook
     {
          //Variables outside of methods in classes are no longer known as variables but at known as 'Fields'
         private List<double> grades;
@@ -30,25 +65,58 @@ namespace GradeBook
                 if(!String.IsNullOrEmpty(value)){
                     name = value;
                 }
-                
             }
         }
-
         private string name;
 
+        //You could write all of the code for the field and property of Name with the same code as below
+        //This is what is known as an Auto Property (you don't even need to set the private field of Name1 when using an auto property)
+        public string Name1
+        {
+            get; 
+            //setting the setter to private means that people can't simply "book.Name = "example"" to set the name
+            //it means that they can only set the name via the contructor (once it is constructed the name cannot be changed)
+            private set;
+        }
+        
+        //The readonly keyword gives you a field that can only initialise or write to in the constructor of a class  
+        //Readonly is handy because it allows you to
+            //write classes where you assign values to fields inside of a constructor and be sure that those fields will never change after that
+        readonly string category = "Science";
+
+        //const is even stronger than readonly as it can never be changed or written, even in the constructor
+        //it is safe to make constants public as they cannot be overwritten
+        //it is common to write a const in all captitals to easily identify constants
+        //const fields are treated like static members of the class
+            //public const string SUBJECT = "Biology";
+
+
         //A constructor in C# must be written as a method with the same name as the Class
-        public Book(string name){
+        //therefore you cannot access the field through an object(created with the class) but through the classname directly
+        //base is a way to reference the base class, when you use base with () you are accessing the constructor of the base class
+        //In this situation I can pass the name along from the Book to the base constructor but otherwise I would just have an empty string
+        public InMemoryBook(string name) : base(name)
+        {
+            category = "";
             grades = new List<double>();
             Name = name;
         }
 
        
         //Use the void Keyword with a method that is not going to return an
-        public void AddGrade(double grade)
+        //the override keyword needs to be used here as this class inherits from an abstract clss with an abstract AddGrade method.
+        public override void AddGrade(double grade)
         {
             if(grade <= 100 && grade >= 0)
             {
               grades.Add(grade);  
+              if(GradeAdded != null)
+              {
+                  //The this object reference that you are currently working with is the sender
+                  //the EventArgs() is a built in class??
+                  //EventArgs() is where you can pass on addtional info about the Event
+                  GradeAdded(this, new EventArgs());
+              }
             }
             else {
                 //There are built in exceptions that you can use in C#
@@ -57,6 +125,13 @@ namespace GradeBook
             }
 
         }
+
+        //At the moment this is just a field in Book.cs
+        //It means that outside of this class anyone can write book.GradeAdded and it will a delegate that is invoked whenever a grade is added (see GradeAddedDelegate above)
+        //Adding the event keyword to the delegate adds some additional restrictions and capabilities that makes this delegate safer to use
+        //We will 'invoke' this delegate in AddGrade (remember to think of delegates like fields/variables)
+        public event GradeAddedDelegate GradeAdded;
+
 
         //I have asked that this method return the type "Statistics" which is a class that I have created in another file.
         public Statistics GetStatistics()

@@ -21,7 +21,7 @@ namespace GradeBook.Tests
             //If you are referencing classes that are in other folders you can add a ProjectReference.
             //can add a ProjectReference by typing into terminal: dotnet add reference ../../src/GradeBook/GradeBook.csproj 
             //The above will add an ItemGroup into the csproj Tests file
-            var book = new Book("");
+            var book = new InMemoryBook("");
             book.AddGrade(89.1);
             book.AddGrade(90.5);
             book.AddGrade(77.3);

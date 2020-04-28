@@ -4,9 +4,48 @@ using Xunit;
 
 namespace GradeBook.Tests
 {
+
+    public delegate string WriteLogDelegate(string logMessage);
+
     //The name of the test is important and should follow good abstraction naming conventions
     public class TypeTests
     {
+        int count = 0;
+
+        [Fact]
+        public void WriteLogDelegateCanPointToMethod(){
+                WriteLogDelegate log;
+                
+                //You can instantiate delegates like you do classes
+                //Note that when you pass the method to your delegate you do not need to add the () after the method name as you do not actually want to run the method
+                //You pass the method into the delegate and that basically says "I want my delegate to be initialised with this method"
+                log = new WriteLogDelegate(ReturnMessage);
+
+                //The shorthand version of above is:
+                //log = ReturnMessage;
+                //So when you write the above you are actually invoking the below method.
+
+                //if you get an error "unnassigned local variable 'log'" you simply need to assign the log variable by adding = ReturnMessage to the above "WriteLogDelegate log" line
+                log += ReturnMessage;
+                log += IncrementCount;
+
+                var result = log("Hello!");
+                //If I was just using one method with my delegate I could check it this way
+                //Assert.Equal("Hello!", result);
+                Assert.Equal(3, count);
+        }
+
+        string ReturnMessage(string message){
+            count++;
+            return message.ToLower();
+        }
+
+                string IncrementCount(string message){
+            count++;
+            return message;
+        }
+
+
         [Fact]
         public void StringsBehaveLikeValueTypes()
         {
@@ -57,9 +96,9 @@ namespace GradeBook.Tests
             Assert.Equal("New Name", book1.Name);
         }
 
-        private void GetBookSetName(ref Book book, string name)
+        private void GetBookSetName(ref InMemoryBook book, string name)
         {
-            book = new Book(name);
+            book = new InMemoryBook(name);
             book.Name = name;
         }
 
@@ -72,9 +111,9 @@ namespace GradeBook.Tests
             Assert.Equal("Book 1", book1.Name);
         }
 
-        private void GetBookSetName(Book book, string name)
+        private void GetBookSetName(InMemoryBook book, string name)
         {
-            book = new Book(name);
+            book = new InMemoryBook(name);
             book.Name = name;
         }
 
@@ -87,7 +126,7 @@ namespace GradeBook.Tests
             Assert.Equal("New Name", book1.Name);
         }
 
-        private void SetName(Book book1, string name)
+        private void SetName(InMemoryBook book1, string name)
         {
             book1.Name = name;
         }
@@ -122,9 +161,9 @@ namespace GradeBook.Tests
         }
 
         //We do not place a [Fact] attribute on this method because this is not a unit test in iteself it is just another method that I call from a unit test somewhere else
-        Book GetBook(string name)
+        InMemoryBook GetBook(string name)
         {
-            return new Book(name);
+            return new InMemoryBook(name);
         }
 
     }
