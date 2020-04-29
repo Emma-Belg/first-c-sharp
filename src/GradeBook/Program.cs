@@ -17,6 +17,7 @@ namespace GradeBook
             //System.Console.WriteLine(adding);
 
             //we have created a Book class to abstract the add grade method as knowing the details of this are not important for the program class
+            IBook diskbook = new DiskBook("Emma's Grade Book");
             var book = new InMemoryBook("Emma's Grade Book");
             book.GradeAdded += OnGradeAdded;
 
