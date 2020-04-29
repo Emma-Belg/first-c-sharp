@@ -3,13 +3,22 @@
 I am following an intro to c# "c# Fundamentals" tutorial by Scott Allen on Plurasight.
 The code is absolutely FULL of comments as I tried to note most of the 'important' things he said. This means the code is _very ugly and not nice to read_, but this is a learning exercise for me and I have made a lot of notes for if I ever need to go back to look at something. 
 
+**For further study**  
+These are a few topics that Scott Allen recommends to continue studying after this tutorial:  
 
-# My Notes from the tutoral  
+⋅⋅⋅Generics (Example from the tute: List of double is a generic type parameter)
+⋅⋅⋅Asynchronous C#
+⋅⋅⋅LINQ (Language Integrated Query)
+⋅⋅⋅Programming Paradigms (OOP and functional programming)
+
+
+
+# My Notes from the tutorial  
 
 ## Types
 
 There are several types in C# including: 
-Object types: Object is the base type for everything in .Net. Anything that we work with (from strings to ints to eg 'book'), they all have some relationship to Object Type. When you declare a variable/field/perameter of type object, I can pass _anything_ through that perameter (eg string or char or double or int - anything).
+Object types: Object is the base type for everything in .Net. Anything that we work with (from strings to ints to eg 'book'), they all have some relationship to Object Type. When you declare a variable/field/parameter of type object, I can pass _anything_ through that parameter (eg string or char or double or int - anything).
 Structures: these are a value type.
 Class types: these are a reference type, 
 Delegates (which are a reference type).
@@ -20,20 +29,20 @@ NOTE: LOOK INTO Struct vs Class vs Delegate
 Classes can have: methods, fields, properties
 
 ### Delegate  
-Delegates describe what a method will look like. Just like classes they should be written into a seperate file.  
+Delegates describe what a method will look like. Just like classes they should be written into a separate file.  
 A delegate allows you to define a variable that can point to and invoke different methods. But a delegate cannot point to just any method, the method must have a specific shape and structure.  
-When you should think about the return type of the method you expect to call, what are the perameter types and number of perameters that you expect to pass when you invoke this method.  
+When you should think about the return type of the method you expect to call, what are the parameter types and number of parameters that you expect to pass when you invoke this method.  
 
-Example: Imagine I want to define a delegate that allows me to log messages. You use a delegate because you need some kind of abstraction/encapsulation between your code and the code that ulimately does the loggin. Delegates provide a way to say which method is to be called when an event is triggered.  
+Example: Imagine I want to define a delegate that allows me to log messages. You use a delegate because you need some kind of abstraction/encapsulation between your code and the code that ultimately does the loggin. Delegates provide a way to say which method is to be called when an event is triggered.  
 
 In this example, we use a delegate because it is not 'hard coded' to a method that only writes to the console or to a file. We want the ability to have a variable or a field that have the same structure but perhaps vastly different implementation. For example one method logs to the console while the other logs to a file.  
 
-Method or perameter _names_ do not matter with delegates, only perameter and return _types_ are what matters. The method return type and perameter type must match the delegate.  
+Method or parameter _names_ do not matter with delegates, only parameter and return _types_ are what matters. The method return type and parameter type must match the delegate.  
 
-Delegates are know as "multi cast delegates" because they can invoke multiple methods. They give you the ability to declare a variable that can be used like a method; it is variable that can be invoked and perameters can be passed along to it.  
+Delegates are know as "multi cast delegates" because they can invoke multiple methods. They give you the ability to declare a variable that can be used like a method; it is variable that can be invoked and parameters can be passed along to it.  
 
 **Event Delegates**  
-When writing an event delegate, you normally write two perameters. The first perameter that you pass should always be of type object and is the sender (who is sending this event out?), the second perameter is some form of Event argument.
+When writing an event delegate, you normally write two parameters. The first parameter that you pass should always be of type object and is the sender (who is sending this event out?), the second parameter is some form of Event argument.
 
 
 ### Reference Types vs Value Types
@@ -43,11 +52,11 @@ Any time you use a class provided by .Net you are using what is known as a **ref
 
 eg: `var b = new Book("Grades");`  
 
-the line of code will force the .Net run time to create a space in the computer memory for the variable b because we need memory to store values that are inside of variables. By the time that statemente finishes executing there will be a value(lets say 1072) in the letter b. The value represensts a memory location (on the megabytes and gigabytes of your computer), there will be memory cells where the .Net run time allocates space for this new book object that you want to create. The value 1072 is the 'address' or location of where the book is in those gigabytes gigabytes that are available. We talk about the variable b being a reference to where the book is stored on the memory of your computer. Your computer then uses this variable as a reference for where the book is stored in memory.  
+the line of code will force the .Net run time to create a space in the computer memory for the variable b because we need memory to store values that are inside of variables. By the time that statement finishes executing there will be a value(lets say 1072) in the letter b. The value represents a memory location (on the megabytes and gigabytes of your computer), there will be memory cells where the .Net run time allocates space for this new book object that you want to create. The value 1072 is the 'address' or location of where the book is in those gigabytes gigabytes that are available. We talk about the variable b being a reference to where the book is stored on the memory of your computer. Your computer then uses this variable as a reference for where the book is stored in memory.  
 Fields are similarly, also references to location in memory.  
 
 **Value types**  
-Intergers are special types in .Net, they are what is known as value types because for a value type the runtime still creates space for the variable x. But instead of creating a 'refrence' to an address inside of the variable, it stores the value itself and it is stored directly in that variable.  
+Integers are special types in .Net, they are what is known as value types because for a value type the runtime still creates space for the variable x. But instead of creating a 'reference' to an address inside of the variable, it stores the value itself and it is stored directly in that variable.  
 eg: `var x = 3;`
 The following are value types: floats, integers, doubles, DateTime, bool, char, Struct
 All Structs are value types. You can check the type in Visual Studio Code by putting your cursor on the type and then hitting f12.  
@@ -57,9 +66,9 @@ Classes and strings are reference types but String is a special case because it 
 ## Pass by Reference vs Pass by Value  
 
 These terms describe how a perameter is given to some method that you are invoking.  
-In the C# language, when you pass a parameter to a method you are ALWAYS passing a perameter by value (unless you specify with keywords). What that means is that I am taking the value from (see below example) book1 and I am copying that and placing it into the perameter Book. The value represents a pointer to a memory location so it is a reference to a book object.  
+In the C# language, when you pass a parameter to a method you are ALWAYS passing a parameter by value (unless you specify with keywords). What that means is that I am taking the value from (see below example) book1 and I am copying that and placing it into the parameter Book. The value represents a pointer to a memory location so it is a reference to a book object.  
 
-That would be very different in a language where they pass perameters by reference because then they would recieve a reference to variable book1 and the perameter could still make changes to the book1 object because the perameter holds a reference to a variable that still holds a reference to my book object. But in a pass by reference scenario, I can even make chages to that book1 varaible itself from the other method and that is something that CANNOT happen if I use 'pass by value'.
+That would be very different in a language where they pass parameters by reference because then they would receive a reference to variable book1 and the parameter could still make changes to the book1 object because the parameter holds a reference to a variable that still holds a reference to my book object. But in a pass by reference scenario, I can even make changes to that book1 variable itself from the other method and that is something that CANNOT happen if I use 'pass by value'.
 
 Example:  
 ```
@@ -82,7 +91,7 @@ Example:
 
 **Pass By Reference**  
 You can do a pass by reference using the "ref" or "out" keywords.  
-The difference between "ref" and "out" is that with the "out" keyword the C# compiler assumes that the incoming reference has not been initialised. Therefore it will be an error if you do not assign to an "out" perameter because it expects something assigned to the output perameter, it is like leaving an uninitialised variable around.
+The difference between "ref" and "out" is that with the "out" keyword the C# compiler assumes that the incoming reference has not been initialized. Therefore it will be an error if you do not assign to an "out" parameter because it expects something assigned to the output parameter, it is like leaving an uninitialized variable around.
 
 ![alt text](CSharpCanPassByReference.png "CSharpCanPassByReference")
 
@@ -91,8 +100,8 @@ The difference between "ref" and "out" is that with the "out" keyword the C# com
 
 ## Events  
 
-Events are not as commonly in todays frameworks as they used to be. For example the ASP.core (which is for server side and web programing) framework, doesn,t use Events very much.  
-Events are popular in forms and desktop programing. Some frameworks that use Events a lot include: Windows presentation foundation, Zamer and forms, Windows forms, ASP.net web forms.  
+Events are not as commonly in today's frameworks as they used to be. For example the ASP.core (which is for server side and web programming) framework, doesn’t use Events very much.  
+Events are popular in forms and desktop programming. Some frameworks that use Events a lot include: Windows presentation foundation, Zamer and forms, Windows forms, ASP.net web forms.  
 Events build on top of Delegates.  
 
 You need to think about certain user actions as events (eg clicking a button could be an event). For our GradeBook we can think of 'adding a grade' as a 'significant event'.  
@@ -122,7 +131,7 @@ You do not need to tell the runtime to delete an object to free up memory space 
 
 When you declare a variable inside of the class but outside of the method it is known as a "field".
 Creating a property is similar to writing setter and getter methods but no method is needed.
-It is a way to encapsulate the field and make it accessable (with a public property) but keep it protected (by keeping the field itself private).  
+It is a way to encapsulate the field and make it accessible (with a public property) but keep it protected (by keeping the field itself private).  
 
 ```
         //note there are no () or ; after the Name as it is not a method but a public property
@@ -150,16 +159,16 @@ You could write the exact same code as above with an Auto Property. This means t
         {
             get;
             //setting the setter to private means that people can't simply "book.Name = "example"" to set/overwrite the name
-            //it means that they can only set the name via the contructor (once it's constructed, the name cannot be changed)
+            //it means that they can only set the name via the constructor (once it's constructed, the name cannot be changed)
             private set;
         }  
 ```
 So what is the point? What is the difference between properties and fields?
-THere are some places in the .Net runtime where properties might behave a bit differently to fields - most of those places revolve around reflection and serialisation. Reflection and Serialization both dynamically at run time go in and inspect an object and see what it has available for state.  
+There are some places in the .Net runtime where properties might behave a bit differently to fields - most of those places revolve around reflection and serialization. Reflection and Serialization both dynamically at run time go in and inspect an object and see what it has available for state.  
 
 
 ## Overloading
-To overload a method you simply write the same method with a different signiture (a method signiture is made up of ONLY the  method name and the perameters the method takes).
+To overload a method you simply write the same method with a different signature (a method signature is made up of ONLY the  method name and the parameters the method takes).
 So for example I could write both doubles and characters to method AddGrade by doing this:
 
 ```
@@ -260,7 +269,7 @@ To implement an interface is the same as inheriting. An example of both inheriti
 The virtual keyword on a method is a way of saying "here is a method that is in this class, but a derived class might choose to override the implementation details for this method."  
 Properties can also be virtual.
 
-**Absract Method**
-An abstract method is implicityly virtual.  
+**Abstract Method**
+An abstract method is implicitly virtual.  
 
         
