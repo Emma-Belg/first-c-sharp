@@ -1,6 +1,6 @@
 # My First c#
 
-I am following an intro to c# "c# Fundamentals" tutorial by Scott Allen on Plurasight.
+I am following an intro to c# "c# Fundamentals" tutorial by Scott Allen on [Plurasight](https://app.pluralsight.com/library/courses/csharp-fundamentals-dev/table-of-contents). 
 The code is absolutely FULL of comments as I tried to note most of the 'important' things he said. This means the code is _very ugly and not nice to read_, but this is a learning exercise for me and I have made a lot of notes for if I ever need to go back to look at something. 
 
 **For further study**  
